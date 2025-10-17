@@ -27,15 +27,16 @@ http://localhost:8081/swagger-ui/index.html#/
 Para ejecutar el frontend se debe ejecutar el siguiente comando:
 
 
-cd recetas-app
-npm install
+         cd recetas-app
+  
+         npm install
 
 
-para arrancar el servidor 
+para arrancar el servidor:
 
-ng serve
+        ng serve
 
-http://localhost:4200/
+     http://localhost:4200/
 
 ------  ------  ------  ------  ------  ------  
 
