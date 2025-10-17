@@ -1,5 +1,5 @@
 package com.recetas.app.recetas;
-
+import  com.recetas.app.recetas.RecetaModel;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -8,53 +8,39 @@ import java.util.*;
 @CrossOrigin(origins = "*") // permite llamadas desde el front (Angular)
 public class RecetaController {
 
-    private List<Map<String, Object>> recetas = new ArrayList<>();
+    private final RecetaService recetaService;
 
-    // CREATE - POST
-    @PostMapping
-    public Map<String, Object> crearReceta(@RequestBody Map<String, Object> nuevaReceta) {
-        nuevaReceta.put("id", recetas.size() + 1);
-        recetas.add(nuevaReceta);
-        return nuevaReceta;
+    public RecetaController(RecetaService recetaService) {
+        this.recetaService = recetaService;
     }
 
-    // READ ALL - GET
     @GetMapping
-    public List<Map<String, Object>> obtenerTodasLasRecetas() {
-        return recetas;
+    public List<RecetaModel> obtenerTodasLasRecetas() {
+        return recetaService.getAllRecetas();
     }
 
-    // READ ONE - GET by ID
     @GetMapping("/{id}")
-    public Map<String, Object> obtenerRecetaPorId(@PathVariable int id) {
-        return recetas.stream()
-                .filter(r -> (int) r.get("id") == id)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Receta no encontrada"));
+    public Optional<RecetaModel> obtenerRecetaPorId(@PathVariable int id) {
+        return recetaService.getById(id);
     }
 
-    // UPDATE - PUT
-    @PutMapping("/{id}")
-    public Map<String, Object> actualizarReceta(
-            @PathVariable int id,
-            @RequestBody Map<String, Object> recetaActualizada) {
-        Map<String, Object> receta = recetas.stream()
-                .filter(r -> (int) r.get("id") == id)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Receta no encontrada"));
-
-        receta.putAll(recetaActualizada);
-        receta.put("id", id);
-        return receta;
+    @PostMapping
+    public String  crearReceta(@RequestBody RecetaModel receta) {
+        recetaService.Post(receta);
+        return "receta creada";
     }
 
-    // DELETE - DELETE
+    @PutMapping
+    public String  actualizarReceta(@RequestBody RecetaModel receta) {
+        recetaService.update(receta);
+        return "receta creada";
+    }
+
     @DeleteMapping("/{id}")
-    public String eliminarReceta(@PathVariable int id) {
-        boolean eliminada = recetas.removeIf(r -> (int) r.get("id") == id);
-        if (!eliminada) {
-            throw new RuntimeException("Receta no encontrada");
-        }
-        return "Receta eliminada correctamente";
+    public String  EliminarReceta(@PathVariable int id) {
+        recetaService.delete(id);
+        return "receta fue eleminada";
     }
+
+
 }
