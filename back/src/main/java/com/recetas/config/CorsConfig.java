@@ -1,4 +1,4 @@
-package com.recetas.app.config;
+package com.recetas.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
