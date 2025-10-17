@@ -1,12 +1,29 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  // font-weight: 500;
+  // color: #2c3e50;
+  // background-color: #f8f9fa; /* opcional */
+  // margin: 0;
+}
+
 .navbar {
-  background-color: #007BFF; // azul brillante
+
+  background-color: #63adfc; // azul brillante
   color: white;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+  .logo {
+    display: block;
+    width: 160px;
+    height: auto;
+    margin: 1rem 0 0 1rem;
+    user-select: none;
+    cursor: pointer;
+    pointer-events: auto;
+  }
   .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -29,14 +46,17 @@
     padding: 0;
 
     li a {
-      color: white;
+      font-family: 'Poppins', sans-serif;
+      color: rgb(0, 0, 0);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 700;
+      font-size: 1.5rem;
+      padding-left: 1.5rem;
       transition: color 0.2s ease-in-out;
 
       &:hover,
       &.active {
-        color: #dceeff;
+        // color: #dceeff;
         text-decoration: underline;
       }
     }
