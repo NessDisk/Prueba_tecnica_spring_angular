@@ -1,12 +1,41 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RecetaService } from '../../services/receta.service';
 
 @Component({
   selector: 'app-crear-receta',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './crear-receta.component.html',
-  styleUrl: './crear-receta.component.scss'
+  styleUrls: ['./crear-receta.component.scss']
 })
 export class CrearRecetaComponent {
+  receta = {
+    nombre: '',
+    descripcion: '',
+    categoria: '',
+    tiempoPreparacion: 0
+  };
 
+  constructor(private recetaService: RecetaService, private router: Router) {}
+
+  crearReceta() {
+    if (!this.receta.nombre || !this.receta.descripcion || !this.receta.categoria) {
+      alert('Por favor, completa todos los campos');
+      return;
+    }
+
+    this.recetaService.crearReceta(this.receta).subscribe({
+      next: () => {
+        alert('Receta creada con éxito 🍳');
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error('Error al crear la receta:', err);
+        alert('Hubo un error al crear la receta');
+      }
+    });
+  }
 }

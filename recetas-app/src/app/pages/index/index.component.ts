@@ -18,8 +18,13 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     console.log("llegue a receta");
     this.recetaService.getRecetas().subscribe({
-      next: (data) => (this.recetas = data),
+      next: (data) => {this.recetas = data;
+        console.log('Recetas cargadas:', this.recetas);
+
+      },
       error: (err) => console.error('Error al cargar recetas', err),
     });
+    console.log(this.recetas);
+
   }
 }

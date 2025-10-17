@@ -1,1 +1,23 @@
 <p>index works!</p>
+
+<div class="index-container">
+  <h1>🍳 Lista de Recetas</h1>
+
+  <!-- botón para crear una nueva -->
+  <a routerLink="/crear" class="btn-create">➕ Crear nueva receta</a>
+
+  <!-- si hay recetas -->
+  <ul *ngIf="recetas.length > 0; else sinRecetas">
+    <li *ngFor="let receta of recetas">
+      <a [routerLink]="['/receta', receta.id]" class="recipe-link">
+        <h3>{{ receta.nombre }}</h3>
+        <p>{{ receta.descripcion }}</p>
+      </a>
+    </li>
+  </ul>
+
+  <!-- si NO hay recetas -->
+  <ng-template #sinRecetas>
+    <p>No hay recetas registradas todavía.</p>
+  </ng-template>
+</div>

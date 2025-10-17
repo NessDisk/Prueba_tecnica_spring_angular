@@ -1,5 +1,7 @@
 package com.recetas.app.recetas;
 import  com.recetas.app.recetas.RecetaModel;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -24,21 +26,30 @@ public class RecetaController {
     }
 
     @PostMapping
-    public String  crearReceta(@RequestBody RecetaModel receta) {
+    public ResponseEntity<Map<String, String>>  crearReceta(@RequestBody RecetaModel receta) {
         recetaService.Post(receta);
-        return "receta creada";
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Receta creada correctamente");
+
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping
-    public String  actualizarReceta(@RequestBody RecetaModel receta) {
+    public ResponseEntity<Map<String, String>>  actualizarReceta(@RequestBody RecetaModel receta) {
         recetaService.update(receta);
-        return "receta creada";
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Receta actualizada correctamente");
+
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
-    public String  EliminarReceta(@PathVariable int id) {
+    public ResponseEntity<Map<String, String>>  EliminarReceta(@PathVariable int id) {
         recetaService.delete(id);
-        return "receta fue eleminada";
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Receta eliminada correctamente");
+
+        return ResponseEntity.ok(response);
     }
 
 

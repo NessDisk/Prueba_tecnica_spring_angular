@@ -23,12 +23,15 @@ export class RecetaService {
 
   // 🔹 Crear nueva receta
   crearReceta(receta: any): Observable<any> {
+    console.log(receta);
     return this.http.post(this.baseUrl, receta);
   }
 
   // 🔹 Actualizar receta
   actualizarReceta(id: number, receta: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, receta);
+    receta.id
+    console.log(receta);
+    return this.http.put(this.baseUrl, receta);
   }
 
   // 🔹 Eliminar receta

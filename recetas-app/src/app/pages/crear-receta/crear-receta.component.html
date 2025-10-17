@@ -1,1 +1,51 @@
 <p>crear-receta works!</p>
+<div class="form-container">
+  <h2>Crear Nueva Receta</h2>
+
+  <form (ngSubmit)="crearReceta()">
+    <div class="form-group">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        name="nombre"
+        [(ngModel)]="receta.nombre"
+        placeholder="Ej. Arroz con pollo"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Descripción:</label>
+      <textarea
+        name="descripcion"
+        [(ngModel)]="receta.descripcion"
+        placeholder="Describe brevemente la preparación..."
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Categoría:</label>
+      <input
+        type="text"
+        name="categoria"
+        [(ngModel)]="receta.categoria"
+        placeholder="Ej. Almuerzo, Postre, Ensalada"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Tiempo de preparación (minutos):</label>
+      <input
+        type="number"
+        name="tiempoPreparacion"
+        [(ngModel)]="receta.tiempoPreparacion"
+        min="1"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn-save">Guardar Receta</button>
+  </form>
+</div>

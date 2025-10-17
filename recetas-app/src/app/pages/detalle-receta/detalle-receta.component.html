@@ -1,1 +1,74 @@
-<p>detalle-receta works!</p>
+<div class="detalle-container" *ngIf="receta; else cargando">
+  <!-- Vista de detalle -->
+  <div *ngIf="!editMode">
+    <h1>{{ receta.nombre }}</h1>
+    <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
+    <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
+    <p><strong>Tiempo de preparación:</strong> {{ receta.tiempoPreparacion }} min</p>
+
+    <div class="actions">
+      <button class="btn-edit" (click)="habilitarEdicion()">✏️ Editar</button>
+    </div>
+
+    <div class="actions">
+      <button class="btn-edit" routerLink="/" (click)="Eliminar()"> borrar receta</button>
+    </div>
+
+  </div>
+
+  <!-- Vista de edición -->
+  <div *ngIf="editMode">
+    <h2>Editar Receta</h2>
+
+    <form (ngSubmit)="actualizarReceta()">
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input
+          type="text"
+          [(ngModel)]="receta.nombre"
+          name="nombre"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Descripción:</label>
+        <textarea
+          [(ngModel)]="receta.descripcion"
+          name="descripcion"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Categoría:</label>
+        <input
+          type="text"
+          [(ngModel)]="receta.categoria"
+          name="categoria"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Tiempo de preparación (min):</label>
+        <input
+          type="number"
+          [(ngModel)]="receta.tiempoPreparacion"
+          name="tiempoPreparacion"
+          min="1"
+          required
+        />
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-save">Guardar</button>
+        <button type="button" class="btn-cancel" (click)="cancelarEdicion()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #cargando>
+  <p>Cargando receta...</p>
+</ng-template>
