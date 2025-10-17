@@ -1,20 +1,33 @@
-<p>index works!</p>
-
 <div class="index-container">
-  <h1>🍳 Lista de Recetas</h1>
+  <div class="horizontal">
+      <h1>Lista de Recetas</h1>
+      <h3 class="counter_receta"> total de recetas: xxxx</h3>
+    </div>
 
   <!-- botón para crear una nueva -->
-  <a routerLink="/crear" class="btn-create">➕ Crear nueva receta</a>
+  <!-- <a routerLink="/crear" class="btn-create">➕ Crear nueva receta</a> -->
 
   <!-- si hay recetas -->
-  <ul *ngIf="recetas.length > 0; else sinRecetas">
-    <li *ngFor="let receta of recetas">
-      <a [routerLink]="['/receta', receta.id]" class="recipe-link">
+  <div *ngIf="recetas.length > 0; else sinRecetas">
+    <div class="cards-container">
+    <div *ngFor="let receta of recetas">
+      <!-- <a [routerLink]="['/receta', receta.id]" class="recipe-link">
         <h3>{{ receta.nombre }}</h3>
         <p>{{ receta.descripcion }}</p>
+      </a> -->
+
+      <a [routerLink]="['/receta', receta.id]" class="recipe-link">
+
+          <app-card
+            [nombre]="receta.nombre"
+            [descripcion]="receta.descripcion"
+            [imagen]="receta.imagen"
+            [id]="receta.id"
+          ></app-card>
       </a>
-    </li>
-  </ul>
+      </div>
+    </div>
+  </div>
 
   <!-- si NO hay recetas -->
   <ng-template #sinRecetas>

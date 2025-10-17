@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { RecetaService } from '../../services/receta.service';
-
+import { CardComponent } from '../../shared/card/card.component';
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, CardComponent],
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
