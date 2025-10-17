@@ -1,4 +1,4 @@
-package com.recetas.app.recetas_backend;
+package com.recetas.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
