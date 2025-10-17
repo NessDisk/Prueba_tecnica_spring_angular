@@ -6,15 +6,16 @@ https://github.com/NessDisk/Prueba_tecnica_spring_angular
 
 El proyecto es un sistema de gestión de recetas, donde se pueden crear, editar, eliminar y buscar recetas.
 
-El proyecto se ha creado con Spring Boot  en el backend y Angular para el frontend.
+El proyecto se ha creado con Spring Boot 3.4
+  en el backend 18 y Angular para el frontend.
 
 ------  ------  ------  ------  ------  ------  
 para ejecutar el el servidor Spring Boot se debe ejecutar el siguiente comando:
 
 
-cd backend
+          cd backend
 
-mvn spring-boot:run
+          mvn spring-boot:run
 
 El proyecto tiene swagger para la documentación de la API.
 
@@ -36,7 +37,7 @@ para arrancar el servidor:
 
         ng serve
 
-     http://localhost:4200/
+http://localhost:4200/
 
 ------  ------  ------  ------  ------  ------  
 
@@ -57,3 +58,4 @@ https://img.buzzfeed.com/thumbnailer-prod-us-east-1/37b0c33cf11a481f8189f6c37422
 
 
 ![alt text](image.png)
+
