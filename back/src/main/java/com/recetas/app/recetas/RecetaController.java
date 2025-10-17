@@ -7,6 +7,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/recetas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RecetaController {
 
     private final RecetaService recetaService;
