@@ -5,7 +5,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/recetas")
-@CrossOrigin(origins = "*") // permite llamadas desde el front (Angular)
 public class RecetaController {
 
     private final RecetaService recetaService;
