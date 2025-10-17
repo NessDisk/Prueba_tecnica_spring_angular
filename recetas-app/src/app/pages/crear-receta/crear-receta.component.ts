@@ -14,6 +14,8 @@ import { RecetaService } from '../../services/receta.service';
 export class CrearRecetaComponent {
   receta = {
     nombre: '',
+    creatorName:'',
+    urlImg:'',
     descripcion: '',
     categoria: '',
     tiempoPreparacion: 0
@@ -22,7 +24,13 @@ export class CrearRecetaComponent {
   constructor(private recetaService: RecetaService, private router: Router) {}
 
   crearReceta() {
-    if (!this.receta.nombre || !this.receta.descripcion || !this.receta.categoria) {
+    if (!this.receta.nombre ||
+       !this.receta.descripcion ||
+        !this.receta.categoria ||
+        !this.receta.creatorName ||
+        !this.receta.urlImg
+
+      ) {
       alert('Por favor, completa todos los campos');
       return;
     }

@@ -33,6 +33,8 @@ public class RecetaService {
         // setea los datos
         receta.setNombre(recetaActualizada.getNombre());
         receta.setDescripcion(recetaActualizada.getDescripcion());
+        receta.setCreatorName(recetaActualizada.getCreatorName());
+        receta.setUrlImg(recetaActualizada.getUrlImg());
         receta.setCategoria(recetaActualizada.getCategoria());
         receta.setTiempoPreparacion(recetaActualizada.getTiempoPreparacion());
         // elemento actualizado 

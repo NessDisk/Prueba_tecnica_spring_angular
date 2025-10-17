@@ -17,6 +17,8 @@ public class RecetaModel {
     private Long id;
 
     private String nombre;
+    private String urlImg;
+    private String creatorName;
     private String descripcion;
     private String categoria;
 

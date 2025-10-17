@@ -5,7 +5,8 @@
     <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
     <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
     <p><strong>Tiempo de preparación:</strong> {{ receta.tiempoPreparacion }} min</p>
-
+    <p><strong>Cocinero:</strong> {{ receta.creatorName }}</p>
+    <img src="{{ receta.urlImg }}" alt="{{ receta.nombre }}">
     <div class="actions">
       <button class="btn-edit" (click)="habilitarEdicion()"> Editar</button>
     </div>
@@ -49,6 +50,25 @@
           required
         />
       </div>
+
+      <div class="form-group">
+        <label>creatorName:</label>
+        <input
+          type="text"
+          [(ngModel)]="receta.creatorName"
+          name="creatorName"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>urlImg:</label>
+        <input
+          type="text"
+          [(ngModel)]="receta.urlImg"
+          name="urlImg"
+          required
+        /> </div>
 
       <div class="form-group">
         <label>Tiempo de preparación (min):</label>
